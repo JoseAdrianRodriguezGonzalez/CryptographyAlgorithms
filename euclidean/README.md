@@ -13,9 +13,7 @@ a = bq + r \quad \text{with} \quad 0 \leq r < b
 This is the **division algorithm**. Using this relationship, we can state the key property of the Euclidean algorithm:
 
 > If $a = bq + r$, then:
-> $$
-> \gcd(a, b) = \gcd(b, r)
-> $$
+> $$\gcd(a, b) = \gcd(b, r) $$
 
 This recursive property forms the basis of the algorithm.
 
