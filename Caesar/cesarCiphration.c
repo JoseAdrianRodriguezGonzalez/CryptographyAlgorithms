@@ -3,6 +3,7 @@
 #include<time.h>
 #include<wchar.h>
 #include<locale.h>
+#define PRINTABLE_MIN 32
 #define PRINTABLE_MAX 255
 #define PRINTABLE_RANGE (PRINTABLE_MAX - PRINTABLE_MIN + 1)
 #define UNICODE_MAX 0x10FFFF
@@ -20,7 +21,7 @@ void CaesarEncrypthion(message *cadena);
 void CaesarDesEncryption(message *cadena);
 message getMessage();
 int main(){
-    setlocale(LC_ALL, "es_ES.utf8");
+    setlocale(LC_ALL, "es_ES.UTF-8");
 
 
  srand(time(NULL));
@@ -62,19 +63,23 @@ message getMessage(){
   return cer1;
 }
 void CaesarEncrypthion(message *cadena){
-    cadena->encrypted=(wchar_t *) malloc((cadena->size+1)*sizeof(wchar_t));
-    if(cadena->encrypted==NULL){
+    cadena->encrypted = (wchar_t *) malloc((cadena->size + 1) * sizeof(wchar_t));
+    if (cadena->encrypted == NULL) {
         wprintf(L"No se pudo reservar memoria");
         return;
     }
-    cadena->key=rand()%(PRINTABLE_MAX+1);
-    for (size_t i = 0; i < cadena->size; i++){
-        if(cadena->message[i]<=UNICODE_MAX)
-            cadena->encrypted[i]=(wchar_t)((cadena->message[i]+cadena->key)%(UNICODE_MAX+1));
-        else 
-            cadena->encrypted[i]=cadena->message[i];
+    cadena->key = rand() % PRINTABLE_RANGE;
+    for (size_t i = 0; i < cadena->size; i++) {
+        wchar_t ch = cadena->message[i];
+        if (ch >= PRINTABLE_MIN && ch <= PRINTABLE_MAX) {
+            cadena->encrypted[i] = (wchar_t)(
+                PRINTABLE_MIN + (ch - PRINTABLE_MIN + cadena->key) % PRINTABLE_RANGE
+            );
+        } else {
+            cadena->encrypted[i] = ch;
+        }
     }
-    cadena->encrypted[cadena->size]=L'\0';
+    cadena->encrypted[cadena->size] = L'\0';
 }
 void CaesarDesEncryption(message *cadena){
     cadena->decrypted=(wchar_t *) malloc((cadena->size+1)*sizeof(wchar_t));
