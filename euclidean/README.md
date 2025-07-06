@@ -1,8 +1,8 @@
-## Euclidean Algorithm
+# Euclidean Algorithm
 
 The **Euclidean algorithm** is a fundamental method in number theory and cryptography. It allows us to compute the **greatest common divisor (GCD)** of two integers efficiently.
 
-### Mathematical Foundation
+## Mathematical Foundation
 
 Given two integers $a$ and $b$ with $b > 0$, there exist integers $q$ and $r$ such that:
 
@@ -64,7 +64,7 @@ This process continues until $r_{n+1} = 0$. Then:
 - $r = x_n$, $s = y_n$
 - So: $\boxed{ra + sb = d}$
 
-### Pseudocode
+### Pseudocode Euclidean algorithm
 
 ```pseudo
 function euclidean(a,b) do
