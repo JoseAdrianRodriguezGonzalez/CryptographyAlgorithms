@@ -67,9 +67,7 @@ x = (y - k) \mod 26
 $$
 
 For letter S → 18:
-$$
-x = (18 - 11) \mod 26 = 7 \Rightarrow \text{H}
-$$
+$$x = (18 - 11) \mod 26 = 7 \Rightarrow \text{H}$$
 
 And so on. This retrieves the original message.
 
