@@ -84,10 +84,41 @@ This cipher is **not secure** against modern attacks (e.g., frequency analysis),
 ### Pseudocode
 
 ```Pseudo
-function Encryption(message) do
-    key<-rand() mod (ring_base)
-    for (i=0 to i<message-length-1;i++)do
+function CaesarEncrypt(message, ring_base) do
+    key ← random() mod ring_base
+    ciphertext ← empty string
 
+    for i ← 0 to length(message) - 1 do
+        char ← message[i]
+        if char is a letter then
+            x ← ordinal(char) - ordinal('A')
+            y ← (x + key) mod ring_base
+            cipher_char ← chr(y + ordinal('A'))
+        else
+            cipher_char ← char  
+        end if
+        append cipher_char to ciphertext
+    end for
 
+    return (ciphertext, key)
+end
+```
+
+```Pseudo
+function CaesarDecrypt(ciphertext, key, ring_base) do
+    plaintext ← empty string
+    for i ← 0 to length(ciphertext) - 1 do
+        char ← ciphertext[i]
+        if char is a letter then
+            y ← ordinal(char) - ordinal('A')
+            x ← (y - key + ring_base) mod ring_base
+            plain_char ← chr(x + ordinal('A'))
+        else
+            plain_char ← char
+        end if
+        append plain_char to plaintext
+    end for
+    return plaintext
+end
 
 ```
