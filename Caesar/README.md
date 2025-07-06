@@ -2,7 +2,7 @@
 
 The **Caesar cipher** is one of the oldest and simplest encryption methods. It consists in **shifting letters** of a message by a fixed number of positions, known as the **key**, within the alphabet.
 
-###  Mathematical Model
+## Mathematical Model
 
 Let the alphabet be represented as the finite ring:
 
@@ -24,13 +24,13 @@ Let:
 
 Then:
 
-### 🔐 Encryption function:
+### 🔐 Encryption function
 
 $$
 y = E_k(x) = (x + k) \mod 26
 $$
 
-### 🔓 Decryption function:
+### 🔓 Decryption function
 
 $$
 x = D_k(y) = (y - k) \mod 26
