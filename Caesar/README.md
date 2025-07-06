@@ -44,15 +44,15 @@ Encrypt the message:
 
 > **HELLO**
 
-Using the key $ k = 11 $, and the mapping  $\text{A} = 0, \text{B} = 1, \dots, \text{Z} = 25 $:
+Using the key $k = 11$, and the mapping  $\text{A} = 0, \text{B} = 1, \dots, \text{Z} = 25$:
 
 | Letter | Value | Encrypted Value (mod 26) | Encrypted Letter |
 |--------|--------|--------------------------|------------------|
-| H      | 7      | $ 7 + 11 = 18 $         | S                |
-| E      | 4      | $ 4 + 11 = 15 $         | P                |
-| L      | 11     | $ 11 + 11 = 22 $        | W                |
-| L      | 11     | $ 11 + 11 = 22 $        | W                |
-| O      | 14     | $ 14 + 11 = 25 $        | Z                |
+| H      | 7      | $7 + 11 = 18$         | S                |
+| E      | 4      | $4 + 11 = 15$         | P                |
+| L      | 11     | $11 + 11 = 22$        | W                |
+| L      | 11     | $11 + 11 = 22$        | W                |
+| O      | 14     | $14 + 11 = 25$        | Z                |
 
 > 🔐 **Encrypted message**: **SPWWZ**
 
