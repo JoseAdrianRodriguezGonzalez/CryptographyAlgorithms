@@ -6,9 +6,9 @@ The **Euclidean algorithm** is a fundamental method in number theory and cryptog
 
 Given two integers $a$ and $b$ with $b > 0$, there exist integers $q$ and $r$ such that:
 
-\[
+$$
 a = bq + r \quad \text{with} \quad 0 \leq r < b
-\]
+$$
 
 This is the **division algorithm**. Using this relationship, we can state the key property of the Euclidean algorithm:
 
