@@ -18,9 +18,9 @@ $$
 
 Let:
 
-- $ x \in \mathbb{Z}_{26} $ be the plaintext letter (as a number)
-- $ k \in \mathbb{Z}_{26} $ be the key (shift)
-- $ y \in \mathbb{Z}_{26} $ be the ciphertext letter (as a number)
+- $x \in \mathbb{Z}_{26}$ be the plaintext letter (as a number)
+- $k \in \mathbb{Z}_{26}$ be the key (shift)
+- $y \in \mathbb{Z}_{26}$ be the ciphertext letter (as a number)
 
 Then:
 
