@@ -45,3 +45,28 @@ $$\varphi(n)|(cd-1)=cd-1=k\varphi(n)$$
 Wwe can identify if the equation has a solution if 
 $$gcd(c,\varphi(n))|1$$
 However, by the previous condition, the diofantique equation alway would have a solution.
+
+```Pseudo
+function RSAecnryption(bitlength) do
+    p ← generateRandomPrime(bitLength)
+    q ← generateRandomPrime(bitLength)
+    n ← p * q
+    φ ← (p - 1) * (q - 1)
+    repeat
+        c ← random integer such that 1 < c < φ
+    until gcd(c, φ) = 1
+    d ← modularInverse(c, φ)
+    return (n, c, d)  // Public key: (n, c), Private key: (n, d)
+```
+
+```pseudo
+function encryptRSA(x, c, n):
+    return modExp(x, c, n)  // x^c mod n
+```
+
+```pseudo
+function decryptRSA(y, d, n):
+    return modExp(y, d, n)  // y^d mod n
+```
+
+To generate a random prime number, is necessary the usage of Miller-Rabin and Erathosthens cribe
