@@ -31,7 +31,7 @@ As first insight on the creation RSA Cipher:
 
 * Calculate $\varphi(n)$ with $(p-1)(q-1)$
 
-* Choose an integer $c$ such as $0<c<\varphi(n)$
+* Choose an integer $c$ such as $0<c<\varphi(n)$ and also $\gcd(c,\varphi(n))=1$
 
 * Calculate d with the $cd\equiv 1\mod \varphi(n)$
 
@@ -39,3 +39,9 @@ To know the value of the d, it is important to notice the following definition
 ## Definition 2
 
 Let $m>1$ an integer number. Define $a\equiv b \mod m \Leftrightarrow m|(a-b)$. If $a\equiv b \mod m $, it will be said a is congruent with b module m. Is easy to see $a \equiv b \mod m \Leftrightarrow a-b$ is a multiple of  m only if $a=b+mq$
+
+So, we know that, $cd \equiv 1 \mod \varphi(n)$, by definition can be 
+$$\varphi(n)|(cd-1)=cd-1=k\varphi(n)$$
+Wwe can identify if the equation has a solution if 
+$$gcd(c,\varphi(n))|1$$
+However, by the previous condition, the diofantique equation alway would have a solution.
