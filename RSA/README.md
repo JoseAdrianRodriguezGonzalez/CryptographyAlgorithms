@@ -18,11 +18,24 @@ It is important to notice the following defintions to construct the pseudocode f
 
 With this background, can be built the cipher RSA. Let $n=pq$ both prime numbers, And $x\in \mathbb{Z_n}$ and c,d integer numbers such as
 
-$$0<c<\varphi(n) \text{ y }cd\equiv 1 mód \varphi(n)$$
+$$0<c<\varphi(n) \text{ y }cd\equiv 1 \mod \varphi(n)$$
 We define the functions
 
 > $cipherRSA^n_c:\mathbb{Z_n}\rightarrow \mathbb{Z_n} \text{  } cipherRSA^n_c(x)=x^c$
 
 > $decipherRSA^n_d:\mathbb{Z_n}\rightarrow \mathbb{Z_n} \text{  } decipherRSA^n_d(x)=x^d$
 
-As first insight on the creation RSA Cipher, 
+As first insight on the creation RSA Cipher:
+
+* Choose two prime numbers enoughly big to be a good ciphration
+
+* Calculate $\varphi(n)$ with $(p-1)(q-1)$
+
+* Choose an integer $c$ such as $0<c<\varphi(n)$
+
+* Calculate d with the $cd\equiv 1\mod \varphi(n)$
+
+To know the value of the d, it is important to notice the following definition
+## Definition 2
+
+Let $m>1$ an integer number. Define $a\equiv b \mod m \Leftrightarrow m|(a-b)$. If $a\equiv b \mod m $, it will be said a is congruent with b module m. Is easy to see $a \equiv b \mod m \Leftrightarrow a-b$ is a multiple of  m only if $a=b+mq$
