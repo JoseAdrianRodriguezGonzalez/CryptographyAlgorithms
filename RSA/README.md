@@ -69,4 +69,4 @@ function decryptRSA(y, d, n):
     return modExp(y, d, n)  // y^d mod n
 ```
 
-To generate a random prime number, is necessary the usage of Miller-Rabin and Erathosthens cribe
+To generate a random prime number, is necessary the usage of Miller-Rabin and Eratosthenes cribe
