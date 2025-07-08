@@ -72,7 +72,8 @@ function decryptRSA(y, d, n):
 To generate a random prime number, is necessary the usage of Miller-Rabin and Eratosthenes cribe
 
 It can defined the following pseudocode to generate a prime number
-```Pseudo 
+
+```Pseudo
 function generate_prime(bit_length, k):
     base_primes ← sieve(10000)
     repeat:
@@ -85,3 +86,9 @@ function generate_prime(bit_length, k):
         if divisible = false and is_probable_prime(n, k):
             return n
 ```
+To calculate the value of d, can be used the euclidean extend algorithm, due to:
+$$cd\equiv 1 \mod \phi(n)\rightarrow cd=1+\varphi(n)q\rightarrow cd-\varphi(n)q=1 $$
+So:
+$$ax+by=d \text{ being x,y unknown}$$
+$$cd+\varphi(n)k=1$$
+This implies $\gcd(\varphi(n),c)=1$

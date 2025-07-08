@@ -1,20 +1,20 @@
 #include "crypt.h"
-int mcd(int a, int b){
+uint64_t mcd(uint64_t a, uint64_t b){
      while(b!=0){
-        int r=a%b;
+        uint64_t r=a%b;
         a=b;
         b=r;
     }
     return a;
 }
-Result Euclidean(int a,int b){
-    int values[4]={1,0,0,1};
-    int q=0,r=0;
+Result Euclidean(uint64_t a,uint64_t b){
+    int64_t values[4]={1,0,0,1};
+    uint64_t q=0,r=0;
     while(b!=0){
         q=a/b;
         r=a%b;
-        int tempx=values[0]-q*values[1];
-        int tempy=values[2]-q*values[3];
+        int64_t tempx=values[0]-q*values[1];
+        int64_t tempy=values[2]-q*values[3];
 
         a=b;
         b=r;
@@ -144,4 +144,29 @@ uint64_t generate_prime(int bit_length,int k){
             return n;
         }
     }
+}
+message getMessage(){
+  message cer1;
+  cer1.capacity=10;
+  cer1.size=0;  
+  cer1.message=(wchar_t* )malloc(cer1.capacity*sizeof(wchar_t));
+  if (cer1.message==NULL){
+    wprintf(L"Error al asignar memoria");
+    return cer1;
+  }
+  wprintf(L"Ingresa un texto: ");
+  int c; 
+  while ((c=getwchar())!=L'\n' && c!=WEOF){
+    if(cer1.size+1>=cer1.capacity){
+        cer1.capacity*=2;
+        cer1.message=(wchar_t* )realloc(cer1.message,cer1.capacity*sizeof(wchar_t));
+        if (cer1.message==NULL){
+            wprintf(L"Error al reasignar memoria");
+            return cer1;
+        }     
+    }
+    cer1.message[cer1.size++]=(wchar_t)c;
+  }
+  cer1.message[cer1.size]=L'\0';
+  return cer1;
 }
