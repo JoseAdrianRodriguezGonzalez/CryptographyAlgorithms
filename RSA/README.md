@@ -70,3 +70,18 @@ function decryptRSA(y, d, n):
 ```
 
 To generate a random prime number, is necessary the usage of Miller-Rabin and Eratosthenes cribe
+
+It can defined the following pseudocode to generate a prime number
+```Pseudo 
+function generate_prime(bit_length, k):
+    base_primes ← sieve(10000)
+    repeat:
+        n ← random_odd_integer(bit_length)
+        divisible ← false
+        for p in base_primes:
+            if n mod p = 0 then:
+                divisible ← true
+                break
+        if divisible = false and is_probable_prime(n, k):
+            return n
+```
