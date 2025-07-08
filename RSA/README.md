@@ -92,3 +92,10 @@ So:
 $$ax+by=d \text{ being x,y unknown}$$
 $$cd+\varphi(n)k=1$$
 This implies $\gcd(\varphi(n),c)=1$
+
+### Encryption and Decryption
+
+To make the following procedures it is produced by the previous functions
+> $cipherRSA^n_c:\mathbb{Z_n}\rightarrow \mathbb{Z_n} \text{  } cipherRSA^n_c(x)=x^c$
+
+> $decipherRSA^n_d:\mathbb{Z_n}\rightarrow \mathbb{Z_n} \text{  } decipherRSA^n_d(x)=x^d$
