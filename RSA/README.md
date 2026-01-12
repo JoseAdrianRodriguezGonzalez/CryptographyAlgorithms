@@ -109,18 +109,18 @@ To make the following procedures it is produced by the previous functions
 
 ### Statement
 
-Let \( n = pq \), where \( p \) and \( q \) are distinct prime numbers.  
-Let \( e \) and \( d \) be integers such that
+Let $ n = pq $, where $ p $ and $ q $ are distinct prime numbers.  
+Let $ c $ and $ d $ be integers such that
 
-\[
-ed \equiv 1 \pmod{\varphi(n)}
-\]
+$$
+cd \equiv 1 \pmod{\varphi(n)}
+$$
 
-Then, for any integer \( x \in \mathbb{Z}_n \),
+Then, for any integer $ x \in \mathbb{Z}_n $,
 
-\[
-x^{ed} \equiv x \pmod{n}
-\]
+$$
+x^{cd} \equiv x \pmod{n}
+$$
 
 which proves the correctness of the RSA decryption process.
 
@@ -128,68 +128,68 @@ which proves the correctness of the RSA decryption process.
 
 ### Proof
 
-Since \( ed \equiv 1 \pmod{\varphi(n)} \), there exists an integer \( k \) such that
+Since $ ed \equiv 1 \pmod{\varphi(n)} $, there exists an integer $ k $ such that
 
-\[
-ed = 1 + k\varphi(n) = 1 + k(p-1)(q-1)
-\]
+$$
+cd = 1 + k\varphi(n) = 1 + k(p-1)(q-1)
+$$
 
 We must show that:
 
-\[
-x^{ed} \equiv x \pmod{n}
-\]
+$$
+x^{cd} \equiv x \pmod{n}
+$$
 
-This is done by analyzing the congruence modulo \( p \) and modulo \( q \), and then applying the **Chinese Remainder Theorem**.
+This is done by analyzing the congruence modulo $ p $ and modulo $ q $, and then applying the **Chinese Remainder Theorem**.
 
 ---
 
-### Case 1: \( \gcd(x, n) = 1 \)
+### Case 1: $ \gcd(x, n) = 1 $
 
-If \( x \) is coprime with \( n \), then by **Euler’s Theorem**:
+If $ x $ is coprime with $ n $, then by **Euler’s Theorem**:
 
-\[
+$$
 x^{\varphi(n)} \equiv 1 \pmod{n}
-\]
+$$
 
 Thus,
 
-\[
-x^{ed} = x^{1 + k\varphi(n)} = x \cdot (x^{\varphi(n)})^k \equiv x \cdot 1^k \equiv x \pmod{n}
-\]
+$$
+x^{cd} = x^{1 + k\varphi(n)} = x \cdot (x^{\varphi(n)})^k \equiv x \cdot 1^k \equiv x \pmod{n}
+$$
 
 ---
 
-### Case 2: \( \gcd(x, n) \neq 1 \)
+### Case 2: $ \gcd(x, n) \neq 1 $
 
-Since \( n = pq \), this case can be analyzed modulo \( p \) and modulo \( q \).
+Since $ n = pq $, this case can be analyzed modulo $ p $ and modulo $ q $.
 
-#### Subcase 2.1: \( x \equiv 0 \pmod{p} \)
+#### Subcase 2.1: $ x \equiv 0 \pmod{p} $
 
 Trivially,
 
-\[
-x^{ed} \equiv 0 \equiv x \pmod{p}
-\]
+$$
+x^{cd} \equiv 0 \equiv x \pmod{p}
+$$
 
-#### Subcase 2.2: \( \gcd(x, p) = 1 \)
+#### Subcase 2.2: $ \gcd(x, p) = 1 $
 
 By **Fermat’s Little Theorem**:
 
-\[
+$$
 x^{p-1} \equiv 1 \pmod{p}
-\]
+$$
 
 Then,
 
-\[
-x^{ed} = x^{1 + k(p-1)(q-1)}
+$$
+x^{cd} = x^{1 + k(p-1)(q-1)}
        = x \cdot (x^{p-1})^{k(q-1)}
        \equiv x \cdot 1^{k(q-1)}
        \equiv x \pmod{p}
-\]
+$$
 
-The same argument applies modulo \( q \).
+The same argument applies modulo $ q $.
 
 ---
 
@@ -197,17 +197,17 @@ The same argument applies modulo \( q \).
 
 Since
 
-\[
-x^{ed} \equiv x \pmod{p}
+$$
+x^{cd} \equiv x \pmod{p}
 \quad \text{and} \quad
-x^{ed} \equiv x \pmod{q}
-\]
+x^{cd} \equiv x \pmod{q}
+$$
 
 by the **Chinese Remainder Theorem**, it follows that:
 
-\[
-x^{ed} \equiv x \pmod{n}
-\]
+$$
+x^{cd} \equiv x \pmod{n}
+$$
 
 ---
 
@@ -215,9 +215,9 @@ x^{ed} \equiv x \pmod{n}
 
 This proves that RSA decryption correctly recovers the original message:
 
-\[
-\boxed{x^{ed} \equiv x \pmod{n}}
-\]
+$$
+\boxed{x^{cd} \equiv x \pmod{n}}
+$$
 
-for all \( x \in \mathbb{Z}_n \), completing the proof of correctness of the RSA algorithm.
+for all $ x \in \mathbb{Z}_n $, completing the proof of correctness of the RSA algorithm.
 
