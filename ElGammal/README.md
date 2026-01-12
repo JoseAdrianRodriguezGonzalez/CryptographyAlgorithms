@@ -94,3 +94,63 @@ $$
 
 This proves the correctness of the ElGamal decryption algorithm.
 
+## Pseudo code 
+
+```Pseudo
+function FieldGenerator(bitLength)
+    repeat 
+      p ← generateRandomPrime(bitLength)
+      M ← randint(bitLength)
+      q ← pM+1 
+    until q is prime
+  return p,M,q 
+```
+
+The field has been defined, as it $F=\mathbf{F}_q$.
+So $|F^\times|=q-1=pM$
+By definition, if we have $g=f^M$, we can choose randomly element of $f$ within the field, but there's some defintion that must be accomplished
+$$ord(f^M)=\frac{ord(f)}{gcd(ord(f),M)}$$
+This is because a lemma, and it means that $ord(f)|pM$
+So the possible values that can have is $1,p,M,pM$
+
+```Pseudo
+function keyGenerator(bitlength)
+  p,M,q  ← FieldGenerator(bitLength)
+  repeat 
+    f ← randomValue within the field within q-1 
+    g  ← f^M mod q 
+  until $g \neq 1$
+  h ← $g^c \pmod{q}$
+  c ← randomValue $0 < c < p$
+  return p,M,q,c,g 
+``` 
+```
+```
+
+The reason that $g\equiv f^M mod q$, is because. Let $f^M=kq+g$, if $g$ has order $p$. it means that $ord(p)$ divides M, or $g=F^M$. and $ord(g)=p$, and to prove this, we can see, that we have our generator letting it as $g^p=1$
+$$f^{Mp}=f^{q-1}=1$$, by Fermat 
+$$f^{q-1}\equiv 1 mod q $$
+So this can be seen as 
+$$g^p \equiv 1 \pmod{q}$$
+
+Finally, if we have 
+$$ord(g)=p$$
+There's a definiton that is says that let a $G$ finite group and $g$ element in $G$. If $g^k=e$, so the $k|ord(g)$
+As p is a prime,the unique values that can divide it are $1$ or $p$, so if $g\equiv 1 \pmod{q}$, but it implies if $ord(g)=1$. But it can not be that, so 
+$$ord(g)=p$$
+For that reason, the value cannot be 1, and $f^M \mod q$, due to the cyclic group, is closed, the value g has to be another prime value
+
+```Pseudo
+
+function Encrypt(g, h, q, x):
+    k ← random integer in {1,…,p−2}
+    x1 ← pow(g, k, q)
+    x2 ← (x * pow(h, k, q)) mod q
+    return (x1, x2)
+
+function Decrypt(c, q, x1, x2):
+    s ← pow(x1, c, q)
+    s_inv ← mod_inverse(s, q)
+    return (x2 * s_inv) mod q
+```
+
