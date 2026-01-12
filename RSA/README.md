@@ -105,27 +105,119 @@ To make the following procedures it is produced by the previous functions
 >Given an input x, the RSA algorithm allows
 >$decipherRSA^n_d(cipherRSA^n_c(x))=x$
 
->Proof :
+## Proof of RSA Correctness
 
-To demonstrate that statement, it goes the following equation $x^{cd}=x$, but $x^{cd \equiv 1 \mod \varphi (n)}=x $. So:
-$$x^{cd}\equiv x \mod n $$
+### Statement
 
-There are two paths, but the both has the same root. So, if we have $\gcd(x,n)=1$, it can be demonstrated with the Euler's theorem.
-$$x^{1+k \varphi(n)}=x x^{k \varphi (n)}=x (x^{\varphi (n)})^k \equiv x 1^k \equiv x \mod n$$
-So, this means that if n and x are correlative, RSA is compatible. $n$ is $pq$, both prime numbers.
-The second case consist on both numbers are not correlative. So there are two subcases. These ones follows up byt $n=pq$, because it can be analyzed both numbers. However, by induction, both will have same solutions.  
-If $x\equiv 0 \mod  p$
-For trival value, it can be said $x\equiv 0 \equiv x mod p$
+Let \( n = pq \), where \( p \) and \( q \) are distinct prime numbers.  
+Let \( e \) and \( d \) be integers such that
 
-If $\gcd(x,p)$
-At here, it is necesary to grab the Fermat's theorem. Given 
-$$a^{p-1} \equiv 1 \mod p$$
-So, the equation that we had for the Euler's theorem can be transformed to:
-$$cd =1+k\varphi(n)=1+k(p-1)(q-1)$$
-$$x^{cd}=x^{1+k(p-1)(q-1)}=x (x^{(p-1)})^{k(q-1)} \equiv x \mod p$$
-$$x \cdot 1^{k(q-1)} \equiv x \mod p$$
-$$x\equiv x \mod p$$
+\[
+ed \equiv 1 \pmod{\varphi(n)}
+\]
 
-At here, with these last steps, has been proved the RSA algorithm and its Decryption
+Then, for any integer \( x \in \mathbb{Z}_n \),
 
+\[
+x^{ed} \equiv x \pmod{n}
+\]
+
+which proves the correctness of the RSA decryption process.
+
+---
+
+### Proof
+
+Since \( ed \equiv 1 \pmod{\varphi(n)} \), there exists an integer \( k \) such that
+
+\[
+ed = 1 + k\varphi(n) = 1 + k(p-1)(q-1)
+\]
+
+We must show that:
+
+\[
+x^{ed} \equiv x \pmod{n}
+\]
+
+This is done by analyzing the congruence modulo \( p \) and modulo \( q \), and then applying the **Chinese Remainder Theorem**.
+
+---
+
+### Case 1: \( \gcd(x, n) = 1 \)
+
+If \( x \) is coprime with \( n \), then by **Euler’s Theorem**:
+
+\[
+x^{\varphi(n)} \equiv 1 \pmod{n}
+\]
+
+Thus,
+
+\[
+x^{ed} = x^{1 + k\varphi(n)} = x \cdot (x^{\varphi(n)})^k \equiv x \cdot 1^k \equiv x \pmod{n}
+\]
+
+---
+
+### Case 2: \( \gcd(x, n) \neq 1 \)
+
+Since \( n = pq \), this case can be analyzed modulo \( p \) and modulo \( q \).
+
+#### Subcase 2.1: \( x \equiv 0 \pmod{p} \)
+
+Trivially,
+
+\[
+x^{ed} \equiv 0 \equiv x \pmod{p}
+\]
+
+#### Subcase 2.2: \( \gcd(x, p) = 1 \)
+
+By **Fermat’s Little Theorem**:
+
+\[
+x^{p-1} \equiv 1 \pmod{p}
+\]
+
+Then,
+
+\[
+x^{ed} = x^{1 + k(p-1)(q-1)}
+       = x \cdot (x^{p-1})^{k(q-1)}
+       \equiv x \cdot 1^{k(q-1)}
+       \equiv x \pmod{p}
+\]
+
+The same argument applies modulo \( q \).
+
+---
+
+### Final Step
+
+Since
+
+\[
+x^{ed} \equiv x \pmod{p}
+\quad \text{and} \quad
+x^{ed} \equiv x \pmod{q}
+\]
+
+by the **Chinese Remainder Theorem**, it follows that:
+
+\[
+x^{ed} \equiv x \pmod{n}
+\]
+
+---
+
+### Conclusion
+
+This proves that RSA decryption correctly recovers the original message:
+
+\[
+\boxed{x^{ed} \equiv x \pmod{n}}
+\]
+
+for all \( x \in \mathbb{Z}_n \), completing the proof of correctness of the RSA algorithm.
 
