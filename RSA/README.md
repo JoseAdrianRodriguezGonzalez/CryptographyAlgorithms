@@ -99,3 +99,33 @@ To make the following procedures it is produced by the previous functions
 > $cipherRSA^n_c:\mathbb{Z_n}\rightarrow \mathbb{Z_n} \text{  } cipherRSA^n_c(x)=x^c$
 
 > $decipherRSA^n_d:\mathbb{Z_n}\rightarrow \mathbb{Z_n} \text{  } decipherRSA^n_d(x)=x^d$
+
+> Let's demonstrate the following statement
+
+>Given an input x, the RSA algorithm allows
+>$decipherRSA^n_d(cipherRSA^n_c(x))=x$
+
+>Proof :
+
+To demonstrate that statement, it goes the following equation $x^{cd}=x$, but $x^{cd \equiv 1 \mod \varphi (n)}=x $. So:
+$$x^{cd}\equiv x \mod n $$
+
+There are two paths, but the both has the same root. So, if we have $\gcd(x,n)=1$, it can be demonstrated with the Euler's theorem.
+$$x^{1+k \varphi(n)}=x x^{k \varphi (n)}=x (x^{\varphi (n)})^k \equiv x 1^k \equiv x \mod n$$
+So, this means that if n and x are correlative, RSA is compatible. $n$ is $pq$, both prime numbers.
+The second case consist on both numbers are not correlative. So there are two subcases. These ones follows up byt $n=pq$, because it can be analyzed both numbers. However, by induction, both will have same solutions.  
+If $x\equiv 0 \mod  p$
+For trival value, it can be said $x\equiv 0 \equiv x mod p$
+
+If $\gcd(x,p)$
+At here, it is necesary to grab the Fermat's theorem. Given 
+$$a^{p-1} \equiv 1 \mod p$$
+So, the equation that we had for the Euler's theorem can be transformed to:
+$$cd =1+k\varphi(n)=1+k(p-1)(q-1)$$
+$$x^{cd}=x^{1+k(p-1)(q-1)}=x (x^{(p-1)})^{k(q-1)} \equiv x \mod p$$
+$$x \cdot 1^{k(q-1)} \equiv x \mod p$$
+$$x\equiv x \mod p$$
+
+At here, with these last steps, has been proved the RSA algorithm and its Decryption
+
+
